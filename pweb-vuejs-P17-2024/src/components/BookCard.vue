@@ -7,6 +7,7 @@ export interface BookObject {
   _id: string;
   title: string;
   author: string;
+  coverImage: string;
   publishedDate: string;
   tags: string[];
   initialQty: number;
@@ -34,29 +35,38 @@ export default {
 </script>
 
 <template>
-  <div class="border border-black rounded-xl px-6 pt-6 pb-8">
+  <div class="border border-gray-700 rounded-xl overflow-hidden shadow-md bg-black text-white">
+    <!-- Cover Image -->
     <img
-      src="https://placehold.co/300x200"
-      alt="Wajib Pake Typescript hehe"
-      class="rounded-xl mb-4 w-full"
+      :src="book.coverImage"
+      alt="Book cover"
+      class="w-full h-48 object-cover"
     />
-    <h3 class="text-xl font-bold text-left">
-      {{ book.title }} | {{ book.author }}
-    </h3>
-    <hr class="my-2 border border-black" />
-    <h5 class="text-md font-medium text-left">
-      Published: {{ book.publishedDate }} by {{ book.publisher }}
-    </h5>
-    <h5 class="text-md font-medium text-left">
-      Category: {{ book.tags.join(", ") }}
-    </h5>
-    <h5 class="text-md font-medium text-left">
-      Quantity: {{ book.qty }} of {{ book.initialQty }} books
-    </h5>
-    <RouterLink
-      :to="getReadMoreLink(book._id)"
-      class="px-4 text-white py-2 bg-blue-400 font-semibold rounded-xl inline-block mt-2"
-      >Read More</RouterLink
-    >
+
+    <!-- Book Information -->
+    <div class="p-6">
+      <!-- Details -->
+      <p class="text-sm font-medium mb-2">
+        <strong>Published:</strong> {{ book.publishedDate }}
+      </p>
+      <p class="text-sm font-medium mb-2">
+        <strong>Author:</strong> {{ book.author }}
+      </p>
+      <p class="text-sm font-medium mb-2">
+        <strong>Category:</strong> {{ book.tags.join(", ") }}
+      </p>
+      <p class="text-sm font-medium mb-2">
+        <strong>Quantity:</strong> {{ book.qty }} of {{ book.initialQty }} books
+      </p>
+
+      <!-- Read More Button -->
+      <RouterLink
+        :to="getReadMoreLink(book._id)"
+        class="inline-block mt-4 px-6 py-2 bg-gray-800 text-white font-semibold rounded-md hover:bg-gray-600 transition"
+      >
+        Read More
+      </RouterLink>
+    </div>
   </div>
 </template>
+
