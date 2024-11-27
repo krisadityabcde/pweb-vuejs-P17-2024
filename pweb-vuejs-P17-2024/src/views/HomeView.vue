@@ -6,6 +6,7 @@ interface BookObject {
   title: string;
   author: string;
   tags: string[];
+  coverImage: string;
   publishedDate: string;
   initialQty: number;
   qty: number;
@@ -25,6 +26,7 @@ export default {
         throw new Error("Failed to fetch books data");
       }
       const data = await response.json();
+      console.log(data)
       this.booksData = [...data.data];
     } catch (error) {
       console.error(error);
@@ -39,7 +41,7 @@ export default {
 
 <template>
   <main class="mt-10 mx-8 pb-24">
-    <h1 class="font-bold text-3xl text-center">Perpustakaan P17</h1>
+    <h1 class="font-bold text-3xl text-center">Book Gallery App P10</h1>
     <div class="flex flex-wrap justify-center gap-4 mt-10">
       <BookCard
         v-if="booksData.length"
