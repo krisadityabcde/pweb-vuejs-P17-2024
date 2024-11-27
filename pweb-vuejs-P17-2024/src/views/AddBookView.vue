@@ -83,7 +83,7 @@ export default defineComponent({
           v-model="title"
           id="title"
           type="text"
-          placeholder="Tintin di Tibet"
+          placeholder=""
           class="w-full px-3 py-2 border rounded-lg"
           required
         />
@@ -96,7 +96,7 @@ export default defineComponent({
           v-model="author"
           id="author"
           type="text"
-          placeholder="Hergé"
+          placeholder=""
           class="w-full px-3 py-2 border rounded-lg"
           required
         />
@@ -121,7 +121,7 @@ export default defineComponent({
           v-model="publisher"
           id="publisher"
           type="text"
-          placeholder="Gramedia"
+          placeholder=""
           class="w-full px-3 py-2 border rounded-lg"
           required
         />
@@ -133,7 +133,7 @@ export default defineComponent({
         <textarea
           v-model="description"
           id="description"
-          placeholder="Kisah petualangan Tintin di Tibet"
+          placeholder=""
           class="w-full px-3 py-2 border rounded-lg"
           required
         ></textarea>
@@ -146,7 +146,7 @@ export default defineComponent({
           v-model="coverImage"
           id="coverImage"
           type="url"
-          placeholder="https://placehold.co/300x200"
+          placeholder=""
           class="w-full px-3 py-2 border rounded-lg"
           required
         />
@@ -184,7 +184,7 @@ export default defineComponent({
           v-model="tags"
           id="tags"
           type="text"
-          placeholder="Adventure, Fiction, Mystery"
+          placeholder=""
           class="w-full px-3 py-2 border rounded-lg"
           required
         />
