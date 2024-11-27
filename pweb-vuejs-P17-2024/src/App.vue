@@ -37,13 +37,13 @@ export default defineComponent({
         <RouterLink
           to="/"
           class="text-white hover:text-blue-300 transition-colors duration-200"
-          >Home</RouterLink
-        >
+          >Home
+        </RouterLink>
         <RouterLink
           to="/add-book"
           class="text-white hover:text-blue-300 transition-colors duration-200"
-          >Add New Book</RouterLink
-        >
+          >Add New Book
+          </RouterLink>
       </div>
 
       <!-- Mobile Navigation Toggle -->
