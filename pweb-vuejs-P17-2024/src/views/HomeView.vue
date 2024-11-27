@@ -20,7 +20,7 @@ export default {
   }),
   async mounted() {
     try {
-      const response = await fetch("http://localhost:1717/");
+      const response = await fetch("http://localhost:1717/book");
       if (!response.ok) {
         throw new Error("Failed to fetch books data");
       }
