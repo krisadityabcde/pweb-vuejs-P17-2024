@@ -70,159 +70,194 @@ export default defineComponent({
 
 <template>
   <main class="mt-10 mx-8 pb-24">
-    <h1 class="font-bold text-3xl text-center mb-2">Add New Book</h1>
+    <!-- Header -->
+    <h1 class="font-bold text-3xl text-center mb-6 text-white">
+      Add New Book
+    </h1>
+    
+    <!-- Form -->
     <form
       @submit.prevent="addBook"
-      class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md"
+      class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200"
     >
-      <div class="mb-4">
-        <label for="title" class="block text-gray-700 font-bold mb-2"
-          >Title</label
-        >
+      <!-- Input: Title -->
+      <div class="mb-6">
+        <label for="title" class="block text-gray-700 font-semibold mb-2">
+          Title
+        </label>
         <input
           v-model="title"
           id="title"
           type="text"
-          placeholder=""
-          class="w-full px-3 py-2 border rounded-lg"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+          placeholder="Enter the book title"
           required
         />
       </div>
-      <div class="mb-4">
-        <label for="author" class="block text-gray-700 font-bold mb-2"
-          >Author</label
-        >
+
+      <!-- Input: Author -->
+      <div class="mb-6">
+        <label for="author" class="block text-gray-700 font-semibold mb-2">
+          Author
+        </label>
         <input
           v-model="author"
           id="author"
           type="text"
-          placeholder=""
-          class="w-full px-3 py-2 border rounded-lg"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+          placeholder="Enter the author's name"
           required
         />
       </div>
-      <div class="mb-4">
-        <label for="publishedDate" class="block text-gray-700 font-bold mb-2"
-          >Published Date</label
-        >
+
+      <!-- Input: Published Date -->
+      <div class="mb-6">
+        <label for="publishedDate" class="block text-gray-700 font-semibold mb-2">
+          Published Date
+        </label>
         <input
           v-model="publishedDate"
           id="publishedDate"
           type="date"
-          class="w-full px-3 py-2 border rounded-lg"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
           required
         />
       </div>
-      <div class="mb-4">
-        <label for="publisher" class="block text-gray-700 font-bold mb-2"
-          >Publisher</label
-        >
+
+      <!-- Input: Publisher -->
+      <div class="mb-6">
+        <label for="publisher" class="block text-gray-700 font-semibold mb-2">
+          Publisher
+        </label>
         <input
           v-model="publisher"
           id="publisher"
           type="text"
-          placeholder=""
-          class="w-full px-3 py-2 border rounded-lg"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+          placeholder="Enter the publisher"
           required
         />
       </div>
-      <div class="mb-4">
-        <label for="description" class="block text-gray-700 font-bold mb-2"
-          >Description</label
-        >
+
+      <!-- Input: Description -->
+      <div class="mb-6">
+        <label for="description" class="block text-gray-700 font-semibold mb-2">
+          Description
+        </label>
         <textarea
           v-model="description"
           id="description"
-          placeholder=""
-          class="w-full px-3 py-2 border rounded-lg"
+          rows="4"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+          placeholder="Write a brief description of the book"
           required
         ></textarea>
       </div>
-      <div class="mb-4">
-        <label for="coverImage" class="block text-gray-700 font-bold mb-2"
-          >Cover Image URL</label
-        >
+
+      <!-- Input: Cover Image URL -->
+      <div class="mb-6">
+        <label for="coverImage" class="block text-gray-700 font-semibold mb-2">
+          Cover Image URL
+        </label>
         <input
           v-model="coverImage"
           id="coverImage"
           type="url"
-          placeholder=""
-          class="w-full px-3 py-2 border rounded-lg"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+          placeholder="Paste the cover image URL"
           required
         />
       </div>
-      <div class="mb-4">
-        <label for="ratingAverage" class="block text-gray-700 font-bold mb-2"
-          >Rating Average</label
-        >
+
+      <!-- Input: Rating Average -->
+      <div class="mb-6">
+        <label for="ratingAverage" class="block text-gray-700 font-semibold mb-2">
+          Rating Average
+        </label>
         <input
           v-model="ratingAverage"
           id="ratingAverage"
           type="number"
           step="0.1"
-          class="w-full px-3 py-2 border rounded-lg"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+          placeholder="Enter the average rating"
           required
         />
       </div>
-      <div class="mb-4">
-        <label for="ratingCount" class="block text-gray-700 font-bold mb-2"
-          >Rating Count</label
-        >
+
+      <!-- Input: Rating Count -->
+      <div class="mb-6">
+        <label for="ratingCount" class="block text-gray-700 font-semibold mb-2">
+          Rating Count
+        </label>
         <input
           v-model="ratingCount"
           id="ratingCount"
           type="number"
-          class="w-full px-3 py-2 border rounded-lg"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+          placeholder="Enter the number of ratings"
           required
         />
       </div>
-      <div class="mb-4">
-        <label for="tags" class="block text-gray-700 font-bold mb-2"
-          >Tags (comma separated)</label
-        >
+
+      <!-- Input: Tags -->
+      <div class="mb-6">
+        <label for="tags" class="block text-gray-700 font-semibold mb-2">
+          Tags (comma separated)
+        </label>
         <input
           v-model="tags"
           id="tags"
           type="text"
-          placeholder=""
-          class="w-full px-3 py-2 border rounded-lg"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+          placeholder="Enter tags separated by commas"
           required
         />
       </div>
-      <div class="mb-4">
-        <label for="initialQty" class="block text-gray-700 font-bold mb-2"
-          >Initial Quantity</label
-        >
+
+      <!-- Input: Initial Quantity -->
+      <div class="mb-6">
+        <label for="initialQty" class="block text-gray-700 font-semibold mb-2">
+          Initial Quantity
+        </label>
         <input
           v-model="initialQty"
           id="initialQty"
           type="number"
-          class="w-full px-3 py-2 border rounded-lg"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+          placeholder="Enter the initial stock quantity"
           required
         />
       </div>
-      <div class="mb-4">
-        <label for="qty" class="block text-gray-700 font-bold mb-2"
-          >Quantity</label
-        >
+
+      <!-- Input: Quantity -->
+      <div class="mb-6">
+        <label for="qty" class="block text-gray-700 font-semibold mb-2">
+          Quantity
+        </label>
         <input
           v-model="qty"
           id="qty"
           type="number"
-          class="w-full px-3 py-2 border rounded-lg"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+          placeholder="Enter the current stock quantity"
           required
         />
       </div>
+
+      <!-- Error Message -->
       <h5
-        class="font-bold text-xl text-red-400 mb-8 text-center"
+        class="font-bold text-lg text-red-500 mb-8 text-center"
         v-show="error"
       >
         {{ errorMsg }}
       </h5>
+
+      <!-- Submit Button -->
       <div class="flex justify-center">
         <button
           type="submit"
-          class="px-4 text-white py-2 bg-blue-400 font-semibold rounded-xl"
+          class="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition duration-200"
         >
           Add Book
         </button>
@@ -230,3 +265,4 @@ export default defineComponent({
     </form>
   </main>
 </template>
+

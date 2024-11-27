@@ -69,62 +69,88 @@ export default defineComponent({
 
 <template>
   <main class="mt-14 mx-8 pb-14">
+    <!-- Back to Home Button -->
     <RouterLink
       to="/"
-      class="px-4 text-white py-2 lg:ml-24 bg-blue-400 font-semibold rounded-xl inline-block"
+      class="px-4 text-white py-2 lg:ml-24 bg-blue-500 font-semibold rounded-xl inline-block hover:bg-blue-600 transition duration-200"
       >⬅️ Back to Home</RouterLink
     >
+
+    <!-- Error Message -->
     <div v-if="fetchError" class="mt-8">
-      <h1 class="font-bold text-3xl text-center">Failed to load book data</h1>
+      <h1 class="font-bold text-3xl text-center text-red-500">
+        Failed to load book data
+      </h1>
     </div>
+
+    <!-- Book Details -->
     <div v-else-if="bookDetail.title" class="mt-8">
-      <div class="flex lg:ml-24 gap-x-10 flex-col lg:flex-row">
+      <div class="flex lg:ml-24 gap-x-10 flex-col lg:flex-row items-start">
+        <!-- Book Cover -->
         <div class="w-full md:w-4/6 lg:w-[500px] lg:flex-shrink-0">
           <img
             :src="bookDetail.coverImage"
-            class="rounded-xl w-full"
+            class="rounded-xl w-full shadow-md"
             alt="Book Cover"
           />
         </div>
-        <div class="mt-10 lg:mt-0 lg:pr-24">
-          <h1 class="font-bold text-xl md:text-2xl lg:text-3xl text-left">
-            Buku {{ bookDetail.title }} by {{ bookDetail.author }}
+
+        <!-- Book Information -->
+        <div class="mt-10 lg:mt-0 lg:pr-24 flex-grow">
+          <h1 class="font-bold text-xl md:text-2xl lg:text-3xl text-white">
+            Buku "{{ bookDetail.title }}" by {{ bookDetail.author }}
           </h1>
-          <h5 class="text-sm text-gray-500 font-bold mt-2">
-            {{ bookDetail.rating.average }} {{ starRating }} ({{
-              bookDetail.rating.count
-            }})
-          </h5>
-          <hr class="border border-black my-2" />
-          <h3 class="text-md md:text-lg text-left">
+          <div class="flex items-center space-x-2 mt-2">
+            <h5 class="text-sm text-white-500 font-bold">
+              {{ bookDetail.rating.average }}
+            </h5>
+            <span class="text-yellow-400">{{ starRating }}</span>
+            <span class="text-sm text-white-500">
+              ({{ bookDetail.rating.count }} reviews)
+            </span>
+          </div>
+          <hr class="border-t border-gray-300 my-4" />
+
+          <!-- Book Description -->
+          <h3 class="text-md md:text-lg text-white-700 leading-relaxed">
             <span class="font-bold">About:</span> {{ bookDetail.description }}
           </h3>
-          <h3 class="text-md md:text-lg text-left">
+
+          <!-- Published Date and Publisher -->
+          <h3 class="text-md md:text-lg text-white-700 mt-4">
             <span class="font-bold">Published:</span>
-            {{ bookDetail.publishedDate }} by
-            {{ bookDetail.publisher }}
+            {{ bookDetail.publishedDate }} by {{ bookDetail.publisher }}
           </h3>
-          <h3 class="text-md md:text-lg text-left">
+
+          <!-- Categories -->
+          <h3 class="text-md md:text-lg text-white-700 mt-2">
             <span class="font-bold">Category:</span>
             {{ bookDetail.tags.join(", ") }}
           </h3>
-          <h3 class="text-md md:text-lg text-left">
+
+          <!-- Stock Information -->
+          <h3 class="text-md md:text-lg text-white-700 mt-2">
             <span class="font-bold">Stock:</span>
-            {{ bookDetail.qty }} of {{ bookDetail.initialQty }} books
+            {{ bookDetail.qty }} of {{ bookDetail.initialQty }} books available
           </h3>
         </div>
       </div>
-      <div class="lg:ml-24 flex justify-center items-center">
+
+      <!-- Remove Book Button -->
+      <div class="lg:ml-24 flex justify-center lg:justify-start mt-8">
         <button
           @click="deleteBook"
-          class="px-4 text-white py-2 w-1/2 bg-red-400 font-semibold rounded-xl mt-8 inline-block"
+          class="px-6 py-3 bg-red-500 text-white font-semibold rounded-xl shadow-md hover:bg-red-600 transition duration-200"
         >
           Remove Book
         </button>
       </div>
     </div>
+
+    <!-- Loading State -->
     <div v-else class="mt-8">
       <h1 class="font-bold text-3xl text-center">Loading...</h1>
     </div>
   </main>
 </template>
+
