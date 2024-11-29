@@ -15,21 +15,22 @@ interface BookObject {
 
 export default {
   name: "HomeView",
-  data: () => ({
-    booksData: [] as BookObject[],
-    fetchError: false,
-  }),
+  data() {
+    return {
+      booksData: [] as BookObject[],
+      fetchError: false,
+    };
+  },
   async mounted() {
     try {
       const response = await fetch("http://localhost:1717/book");
       if (!response.ok) {
-        throw new Error("Failed to fetch books data");
+        throw new Error(`Error: ${response.statusText}`);
       }
       const data = await response.json();
-      console.log(data)
-      this.booksData = [...data.data];
+      this.booksData = data.data;
     } catch (error) {
-      console.error(error);
+      console.error("Fetch error:", error);
       this.fetchError = true;
     }
   },
@@ -42,8 +43,12 @@ export default {
 <template>
   <main class="mt-10 mx-8 pb-24">
     <!-- Hero Section -->
-    <section class="bg-blue-500 text-white py-10 px-8 rounded-lg shadow-md text-center">
-      <h1 class="font-bold text-4xl mb-4">Selamat Datang di Perpustakaan P17</h1>
+    <section
+      class="bg-blue-500 text-white py-10 px-8 rounded-lg shadow-md text-center"
+    >
+      <h1 class="font-bold text-4xl mb-4">
+        Selamat Datang di Perpustakaan P17
+      </h1>
       <p class="text-lg">
         Temukan koleksi buku favorit Anda dan perluas wawasan Anda.
       </p>
@@ -51,9 +56,9 @@ export default {
 
     <!-- Books Section -->
     <section class="mt-10">
-      <h2 class="font-bold text-3xl text-center">Koleksi Buku</h2>
+      <h2 class="font-bold text-3xl text-center mb-6">Koleksi Buku</h2>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Display Books -->
         <BookCard
           v-if="booksData.length"
@@ -72,14 +77,15 @@ export default {
         </div>
 
         <!-- Loading Placeholder -->
-        <div
-          v-else
-          class="col-span-full flex justify-center items-center"
-        >
+        <div v-else class="col-span-full flex justify-center items-center">
           <div class="flex items-center space-x-2">
             <div class="w-5 h-5 bg-blue-500 rounded-full animate-bounce"></div>
-            <div class="w-5 h-5 bg-blue-500 rounded-full animate-bounce delay-150"></div>
-            <div class="w-5 h-5 bg-blue-500 rounded-full animate-bounce delay-300"></div>
+            <div
+              class="w-5 h-5 bg-blue-500 rounded-full animate-bounce delay-150"
+            ></div>
+            <div
+              class="w-5 h-5 bg-blue-500 rounded-full animate-bounce delay-300"
+            ></div>
           </div>
         </div>
       </div>
