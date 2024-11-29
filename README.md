@@ -1,6 +1,5 @@
 # pweb-vuejs-P17-2024
 
-### Author
 | Nama | NRP |
 |---------|---------|
 | Rafael Ega Krisaditya | 5027231025   |
