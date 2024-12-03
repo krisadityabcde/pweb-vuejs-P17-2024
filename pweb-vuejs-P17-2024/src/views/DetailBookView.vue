@@ -58,7 +58,16 @@ export default defineComponent({
       this.$router.push("/");
     },
   },
+
   computed: {
+    formattedPublishedDate(): string {
+      const date = new Date(this.bookDetail.publishedDate);
+      return date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+    },
     starRating(): string {
       const stars = Math.floor(this.bookDetail.rating.average);
       return "⭐".repeat(stars);
@@ -98,7 +107,7 @@ export default defineComponent({
         <!-- Book Information -->
         <div class="mt-10 lg:mt-0 lg:pr-24 flex-grow">
           <h1 class="font-bold text-xl md:text-2xl lg:text-3xl text-white">
-            Buku "{{ bookDetail.title }}" by {{ bookDetail.author }}
+            {{ bookDetail.title }} 
           </h1>
           <div class="flex items-center space-x-2 mt-2">
             <h5 class="text-sm text-white-500 font-bold">
@@ -116,10 +125,16 @@ export default defineComponent({
             <span class="font-bold">About:</span> {{ bookDetail.description }}
           </h3>
 
-          <!-- Published Date and Publisher -->
+          <!-- Published Date -->
           <h3 class="text-md md:text-lg text-white-700 mt-4">
             <span class="font-bold">Published:</span>
-            {{ bookDetail.publishedDate }} by {{ bookDetail.publisher }}
+            {{ formattedPublishedDate }}
+          </h3>
+
+          <!-- Publisher -->
+          <h3 class="text-md md:text-lg text-white-700 mt-4">
+            <span class="font-bold">Author:</span>
+            {{ bookDetail.publisher }}
           </h3>
 
           <!-- Categories -->
